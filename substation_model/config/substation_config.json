@@ -1,0 +1,63 @@
+{
+  "substation": {
+    "name": "SBS_110/10_kV",
+    "voltage_levels": ["110kV", "10kV"],
+    "buses": [
+      {"name": "B1.1_110", "voltage": "110kV", "section": 1, "switched_by": ["QF1.110", "QF2.110", "QF4.110", "QF5.110"]},
+      {"name": "B1.2_110", "voltage": "110kV", "section": 2, "switched_by": ["QF3.110", "QF4.110", "QF6.110"]},
+      {"name": "B1.1_10", "voltage": "10kV", "section": 1, "switched_by": ["QF9.10", "QF10.10", "QF13.10", "QF7.10"]},
+      {"name": "B1.2_10", "voltage": "10kV", "section": 2, "switched_by": ["QF11.10", "QF12.10", "QF13.10", "QF8.10"]}
+    ],
+    "lines": [
+      {"name": "W1.110", "voltage": "110kV", "connected_with": ["B1.1_110"], "switched_by": ["QF1.110"]},
+      {"name": "W2.110", "voltage": "110kV", "connected_with": ["B1.1_110"], "switched_by": ["QF2.110"]},
+      {"name": "W3.110", "voltage": "110kV", "connected_with": ["B1.2_110"], "switched_by": ["QF3.110"]},
+      {"name": "W1.10", "voltage": "10kV", "connected_with": ["B1.1_10"], "switched_by": ["QF9.10"]},
+      {"name": "W2.10", "voltage": "10kV", "connected_with": ["B1.1_10"], "switched_by": ["QF10.10"]},
+      {"name": "W3.10", "voltage": "10kV", "connected_with": ["B1.2_10"], "switched_by": ["QF11.10"]},
+      {"name": "W4.10", "voltage": "10kV", "connected_with": ["B1.2_10"], "switched_by": ["QF12.10"]}
+    ],
+    "transformers": [
+      {"name": "T1", "voltage": "110/10kV", "power": 25000, "hv": 110, "lv": 10, "connected_with": ["B1.1_110", "B1.1_10"], "switched_by": ["QF5.110", "QF7.10"]},
+      {"name": "T2", "voltage": "110/10kV", "power": 25000, "hv": 110, "lv": 10, "connected_with": ["B1.2_110", "B1.2_10"], "switched_by": ["QF6.110", "QF8.10"]}
+    ],
+    "circuit_breakers": [
+      {"name": "QF1.110", "voltage": "110kV", "normal_state": "closed"},
+      {"name": "QF2.110", "voltage": "110kV", "normal_state": "closed"},
+      {"name": "QF3.110", "voltage": "110kV", "normal_state": "closed"},
+      {"name": "QF4.110", "voltage": "110kV", "normal_state": "open"},
+      {"name": "QF5.110", "voltage": "110kV", "normal_state": "closed"},
+      {"name": "QF6.110", "voltage": "110kV", "normal_state": "closed"},
+      {"name": "QF7.10", "voltage": "10kV", "normal_state": "closed"},
+      {"name": "QF8.10", "voltage": "10kV", "normal_state": "closed"},
+      {"name": "QF9.10", "voltage": "10kV", "normal_state": "closed"},
+      {"name": "QF10.10", "voltage": "10kV", "normal_state": "closed"},
+      {"name": "QF11.10", "voltage": "10kV", "normal_state": "closed"},
+      {"name": "QF12.10", "voltage": "10kV", "normal_state": "closed"},
+      {"name": "QF13.10", "voltage": "10kV", "normal_state": "open"}
+    ]
+  },
+  "protection": {
+    "line_protection_110": [
+      {"name_protected_equipment": "W1.110", "setting": 280, "vendor": "Relematika", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.10},
+      {"name_protected_equipment": "W2.110", "setting": 250, "vendor": "Relematika", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.10},
+      {"name_protected_equipment": "W3.110", "setting": 290, "vendor": "Relematika", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.10}
+    ],
+    "line_protection_10": [
+      {"name_protected_equipment": "W1.10", "setting": 2100, "vendor": "Siemens", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.10},
+      {"name_protected_equipment": "W2.10", "setting": 1900, "vendor": "Siemens", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.10},
+      {"name_protected_equipment": "W3.10", "setting": 2200, "vendor": "Siemens", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.10},
+      {"name_protected_equipment": "W4.10", "setting": 1950, "vendor": "Siemens", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.10}
+    ],
+    "transformer_protection": [
+      {"name_protected_equipment": "T1", "setting": 400, "vendor": "ABB", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.08},
+      {"name_protected_equipment": "T2", "setting": 400, "vendor": "ABB", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.08}
+    ],
+    "bus_protection": [
+      {"name_protected_equipment": "B1.1_110", "setting": 300, "vendor": "Relematika", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.09},
+      {"name_protected_equipment": "B1.2_110", "setting": 300, "vendor": "Relematika", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.09},
+      {"name_protected_equipment": "B1.1_10", "setting": 2000, "vendor": "Siemens", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.09},
+      {"name_protected_equipment": "B1.2_10", "setting": 2000, "vendor": "Siemens", "base": "Microprocessor", "main_protection_failure_probability": 0.4, "backup_protection_failure_probability": 0.09}
+    ]
+  }
+}
